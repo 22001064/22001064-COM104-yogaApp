@@ -114,7 +114,10 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+import os
 
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY') # Replace with your actual Stripe secret key
+FRONTEND_URL = 'http://localhost:3000'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
