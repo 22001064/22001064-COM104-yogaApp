@@ -1,29 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Axios for API requests
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
-import Header from '../components/header';
-import UserForm from '../components/form';
-import Buttonbrn from '../components/button';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Footer from '../components/footer';
-import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-
 import '../styles/Login.css';
 
 const Login = () => {
-  // State to show/hide the modal
-  const [showModal, setShowModal] = useState(false);
-
-  // Handlers to open and close the modal
-  const handleShow = () => setShowModal(true);
-  const handleClose = () => setShowModal(false);
-  
-  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({ username: '', password: '', remember: false });
   const [error, setError] = useState('');
 
@@ -40,21 +23,32 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`http://localhost:5000/users?username=${credentials.username}&password=${credentials.password}`);
-      if (response.data.length > 0) {
+      const response = await axios.post('http://localhost:8000/users/login/', {
+        username: credentials.username,
+        password: credentials.password,
+      });
+
+      if (response.data.success) {
+        const user = {
+          username: response.data.username,
+          email: response.data.email,
+          role: response.data.role,
+        };
+
         // Store login info (localStorage if "Remember Me" is checked)
         if (credentials.remember) {
-          localStorage.setItem('user', JSON.stringify(response.data[0]));
+          localStorage.setItem('user', JSON.stringify(user));
         } else {
-          sessionStorage.setItem('user', JSON.stringify(response.data[0]));
+          sessionStorage.setItem('user', JSON.stringify(user));
         }
-        navigate('/home'); // Redirect to Home
+
+        window.location.href = '/schedule'; // Redirect to Schedule page
       } else {
-        setError('Invalid username or password');
+        setError(response.data.message || 'Login failed');
       }
-    } catch (error) {
-      console.error('Login error:', error);
-      setError('Failed to connect to server');
+    } catch (err) {
+      console.error('Login error:', err);
+      setError('Server error. Please try again later.');
     }
   };
 
@@ -67,30 +61,30 @@ const Login = () => {
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username" className="mb-3">
               <Form.Label>Username</Form.Label>
-              <Form.Control 
-                type="text" 
+              <Form.Control
+                type="text"
                 name="username"
-                placeholder="Enter your username" 
-                value={credentials.username} 
-                onChange={handleChange} 
-                required 
+                placeholder="Enter your username"
+                value={credentials.username}
+                onChange={handleChange}
+                required
               />
             </Form.Group>
 
             <Form.Group controlId="password" className="mb-3">
               <Form.Label>Password</Form.Label>
-              <Form.Control 
-                type="password" 
+              <Form.Control
+                type="password"
                 name="password"
-                placeholder="Enter your password" 
-                value={credentials.password} 
-                onChange={handleChange} 
-                required 
+                placeholder="Enter your password"
+                value={credentials.password}
+                onChange={handleChange}
+                required
               />
             </Form.Group>
 
             <Form.Group controlId="rememberMe" className="mb-3">
-              <Form.Check 
+              <Form.Check
                 type="checkbox"
                 label="Remember Me"
                 name="remember"
@@ -103,10 +97,6 @@ const Login = () => {
               Login
             </Button>
           </Form>
-
-          <Button variant="primary" type="submit" className="w-100 g-btn">
-            Sign in with Google
-          </Button> {/* Google login button, not yet implemented */}
         </Card.Body>
       </Card>
     </Container>
