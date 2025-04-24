@@ -41,14 +41,21 @@ A full-stack yoga task management app built using React, Django, and SQLite. It 
 
 ### Backend (Django)
 cd backend
+
+
 .backend\Scripts\activate
+
 python manage.py migrate
+
 python manage.py createsuperuser # optional
+
 python manage.py runserver
 
 ### Frontend (React)
 cd frontend
+
 npm install
+
 npm start
 
 Access the frontend at http://localhost:3000 and backend API at http://localhost:8000.
