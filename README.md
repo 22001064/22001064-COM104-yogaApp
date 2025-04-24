@@ -40,22 +40,17 @@ A full-stack yoga task management app built using React, Django, and SQLite. It 
 - VSCode or other IDE
 
 ### Backend (Django)
+```bash
 cd backend
-
-
 .backend\Scripts\activate
-
 python manage.py migrate
-
 python manage.py createsuperuser # optional
-
 python manage.py runserver
 
 ### Frontend (React)
+```bash
 cd frontend
-
 npm install
-
 npm start
 
 Access the frontend at http://localhost:3000 and backend API at http://localhost:8000.
@@ -64,6 +59,8 @@ Access the frontend at http://localhost:3000 and backend API at http://localhost
 
 ## Database Schema & Configuration
 CustomUser Model (models.py):
+
+```python
 class CustomUser(AbstractUser):
     ROLE_CHOICES = [('user', 'User'), ('admin', 'Admin')]
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
@@ -75,13 +72,17 @@ If you want to deploy to a production environment (like Heroku, AWS, or a VPS) t
 
 ## API Documentation
 **Login Endpoint:**
+```bash
 POST /users/login/
 
 **Payload:**
+```json
 {
   "username": "admin",
   "password": "adminpass123"
 }
+
+```json
 **Response:**
 {
   "success": true,
@@ -103,5 +104,5 @@ Includes support for CORS and CSRF headers.
 - Password reset and email verification
 - Add tasks and deadlines dashboard
 - Use PostgreSQL in production
-- Deploy on Heroku or Render
+- Deploy on Heroku, AWS or Render
 - Add JWT token support for persistent secure login
