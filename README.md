@@ -103,13 +103,21 @@ Includes support for CORS and CSRF headers.
 
 ## Testing
 
+**Login Page**
 ![image](https://github.com/user-attachments/assets/f29caf42-c381-4c45-a0db-47cb1fc3a94a)
+![image](https://github.com/user-attachments/assets/aa5dad09-ed34-49c4-8d16-46e9675e66e1)
 
-
+**Schedule**
 ![image](https://github.com/user-attachments/assets/8dfa6b3d-85d1-40c4-8a76-01e047e1f08f)
 ![image](https://github.com/user-attachments/assets/dfca34ac-b204-41cf-b6a1-1d1bdc726bde)
 
+**Available Classes**
+![image](https://github.com/user-attachments/assets/31d0daca-03b2-4a9c-8ce9-c800a7009c83)
+![image](https://github.com/user-attachments/assets/a280c828-97b4-48db-8361-8120365fb3c4)
 
+**Overview Page**
+![image](https://github.com/user-attachments/assets/f36f5d94-b6a4-4494-b0a3-6c8e35d0b601)
+![image](https://github.com/user-attachments/assets/97fe3e9f-b768-48fe-8984-bc0e88e60f6b)
 
 ---
 
