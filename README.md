@@ -44,6 +44,12 @@ A full-stack yoga task management app built using React, Django, and SQLite. It 
 cd backend
 .backend\Scripts\activate
 python manage.py migrate
+
+pip install django
+pip install djangorestframework
+pip install django-cors-headers
+pip install stripe
+
 python manage.py createsuperuser # optional
 python manage.py runserver
 ```
@@ -70,6 +76,18 @@ class CustomUser(AbstractUser):
 
 Uses SQLite (db.sqlite3) by default.
 If you want to deploy to a production environment (like Heroku, AWS, or a VPS) then modify DATABASES in settings.py for PostgreSQL/MySQL production use.
+
+**Django Administration**
+![image](https://github.com/user-attachments/assets/292f09a1-84ac-48e8-9ca9-47039a95692e)
+
+**Configuration Scripts**
+```python
+python manage.py makemigrations
+python manage.py migrate
+```
+
+**db.sqlite3**
+![image](https://github.com/user-attachments/assets/626e04aa-32c5-4fc5-b011-9300b60a3f71)
 
 ---
 
@@ -101,7 +119,32 @@ Includes support for CORS and CSRF headers.
 
 ---
 
+## Wireframes
+
+**Login Page Wireframe**
+![image](https://github.com/user-attachments/assets/9853f041-f545-4f5d-9378-a0017c41df96)
+
+**Schedule Page Wireframe**
+![image](https://github.com/user-attachments/assets/4ddd1aa9-d637-47bc-920b-36e2a133903b)
+
+**Available Classes Page Wireframe**
+![image](https://github.com/user-attachments/assets/304403ac-2411-42ae-9e77-bf772c4e25c8)
+
+**Overview Page Wireframe**
+![image](https://github.com/user-attachments/assets/eac9ff42-37ec-4a87-a380-0683417015b6)
+
+---
+
+## Colour Scheme
+For this webapp I just used the colours which I felt made sense, so I went for the simple whites, greys, pale orange, red for cancel/remove buttons and a blue on hovering on a button, as they fit with what I was going with, and also because these colours are quite easy for the eyes to look at as they are not so vibrant.
+![image](https://github.com/user-attachments/assets/57ff88d0-5b40-444b-9040-1ac3186d3a30)
+
+---
+
 ## Testing
+
+**Google Lighthouse**
+I used Lighthouse to test my webapp on both the user and admin side in order to evaluate its performance, accessibility and best practices.
 
 **Login Page**
 ![image](https://github.com/user-attachments/assets/f29caf42-c381-4c45-a0db-47cb1fc3a94a)
