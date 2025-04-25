@@ -144,6 +144,7 @@ For this webapp I just used the colours which I felt made sense, so I went for t
 ## Testing
 
 **Google Lighthouse**
+
 I used Lighthouse to test my webapp on both the user and admin side in order to evaluate its performance, accessibility and best practices.
 
 **Login Page**
